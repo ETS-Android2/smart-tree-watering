@@ -1,11 +1,11 @@
 package com.mahfuznow.iotree;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.mahfuznow.iotree.ble.DeviceScanActivity;
 
@@ -25,5 +25,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, DeviceScanActivity.class));
             }
         });
+        btn_connect_via_internet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, FirebaseControl.class));
+            }
+        });
+
     }
 }

@@ -8,6 +8,9 @@
     <string name="title_activity_my_device">My Device</string>
     <string name="title_select_your_device">Select your device</string>
 
+    <string name="card_device_info">Device info</string>
+    <string name="card_wifi_info">Wifi info</string>
+
     <string name="des_plant_iot">IOT and plant image</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -40,5 +43,17 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="device_name">Device Name</string>
+    <string name="device_mac_address">Device Mac Address</string>
+    <string name="not_available">N/A</string>
+    <string name="ssid">WiFi SSID</string>
+    <string name="wifi_password">WiFi Password</string>
+    <string name="wifi_set">Set</string>
+    <string name="sensor_info">Sensor info</string>
+    <string name="temperature">Temperature</string>
+    <string name="degree_celcius">°C</string>
+    <string name="humidity">Humidity</string>
+    <string name="device_control">Device Control</string>
+    <string name="water_pump">Water Pump</string>
 
 </resources>
