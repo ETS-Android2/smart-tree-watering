@@ -11,7 +11,8 @@
     <color name="txt_light_grey">#CBCBCB</color>
     <color name="txt_grey">#848484</color>
     <color name="txt_black">#000000</color>
-    <color name="black_overlay">#D3000000</color>
+    <color name="black_overlay">#DD000000</color>
+    <color name="red">#FF5252</color>
 
     //customise background color of the snackbar
     <!--    <color name="design_snackbar_background_color" tools:override="true">#02B3E4</color>-->

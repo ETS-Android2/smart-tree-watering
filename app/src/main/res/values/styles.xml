@@ -1,5 +1,6 @@
 <resources>
     <!-- Base application theme. -->
+<!--  try this later :- Theme.MaterialComponents.DayNight-->
     <style name="AppTheme" parent="Theme.AppCompat.DayNight">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -14,13 +15,20 @@
         <item name="android:actionMenuTextColor">#ffff</item>
         <item name="actionMenuTextColor">#ffff</item>
 
-
         <item name="homeAsUpIndicator">@drawable/ic_arrow_back</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+    </style>
+
+    //dialog background for round corner dialog ++ positioning the dialog in center
+
+    <style name="CustomAlertDialog" parent="Theme.AppCompat.DayNight.Dialog.Alert">
+        <item name="android:windowBackground">@drawable/dialog_shape_round_corner_normal_daynight
+        </item>
+        <item name="android:layout_gravity">center</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

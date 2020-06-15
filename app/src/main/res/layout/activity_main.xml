@@ -43,12 +43,11 @@
             android:layout_margin="10dp"
             android:background="@drawable/btn_shape_round_corner_normal_primary"
             android:text="@string/home_connect_bluetooth"
-            android:textAllCaps="false"
+            android:textAllCaps="true"
             android:textColor="@color/txt_white"
             android:drawableStart="@drawable/ic_bluetooth_svg"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
-            android:textSize="18sp"
             />
 
         <Button
@@ -58,12 +57,11 @@
             android:layout_margin="10dp"
             android:background="@drawable/btn_shape_round_corner_normal_primary"
             android:text="@string/home_connect_internet"
-            android:textAllCaps="false"
+            android:textAllCaps="true"
             android:textColor="@color/txt_white"
             android:drawableStart="@drawable/ic_internet_svg"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
-            android:textSize="18sp"
             />
     </LinearLayout>
 

@@ -1,7 +1,7 @@
 package com.mahfuznow.iotree;
 
 class FirebaseModel {
-    String mac, pass;
+    String mac_address, pass;
     int moisture;
     float temperature;
     boolean pump_trig;
@@ -9,20 +9,20 @@ class FirebaseModel {
     public FirebaseModel() {
     }
 
-    public FirebaseModel(String mac, String pass, int moisture, float temperature, boolean pump_trig) {
-        this.mac = mac;
+    public FirebaseModel(String mac_address, String pass, int moisture, float temperature, boolean pump_trig) {
+        this.mac_address = mac_address;
         this.pass = pass;
         this.moisture = moisture;
         this.temperature = temperature;
         this.pump_trig = pump_trig;
     }
 
-    public String getMac() {
-        return mac;
+    public String getMac_address() {
+        return mac_address;
     }
 
-    public void setMac(String mac) {
-        this.mac = mac;
+    public void setMac_address(String mac_address) {
+        this.mac_address = mac_address;
     }
 
     public String getPass() {

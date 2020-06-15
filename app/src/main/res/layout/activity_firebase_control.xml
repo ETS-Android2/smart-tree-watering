@@ -23,10 +23,11 @@
             android:orientation="vertical"
             android:padding="10dp">
 
-            <com.google.android.material.card.MaterialCardView
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp">
+                android:layout_margin="10dp"
+                app:cardCornerRadius="5dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -80,12 +81,13 @@
                         android:textSize="16sp" />
 
                 </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+            </androidx.cardview.widget.CardView>
 
-            <com.google.android.material.card.MaterialCardView
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp">
+                android:layout_margin="10dp"
+                app:cardCornerRadius="5dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -116,7 +118,7 @@
                             android:layout_margin="5dp"
                             app:arc_bottom_text="@string/temperature"
                             app:arc_finished_color="@color/colorPrimary"
-                            app:arc_progress="15"
+                            app:arc_progress="0"
                             app:arc_stroke_width="7dp"
                             app:arc_suffix_text="@string/degree_celcius"
                             app:arc_text_color="@color/colorPrimaryDark"
@@ -129,19 +131,20 @@
                             android:layout_margin="5dp"
                             app:arc_bottom_text="@string/humidity"
                             app:arc_finished_color="@color/colorPrimary"
-                            app:arc_progress="26"
+                            app:arc_progress="0"
                             app:arc_stroke_width="5dp"
                             app:arc_text_color="@color/colorPrimaryDark"
                             app:arc_unfinished_color="?android:textColorSecondary" />
 
                     </LinearLayout>
                 </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+            </androidx.cardview.widget.CardView>
 
-            <com.google.android.material.card.MaterialCardView
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp">
+                android:layout_margin="10dp"
+                app:cardCornerRadius="5dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -186,7 +189,7 @@
                     </LinearLayout>
 
                 </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+            </androidx.cardview.widget.CardView>
         </LinearLayout>
 
     </ScrollView>

@@ -1,13 +1,16 @@
 package com.mahfuznow.iotree;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,9 +39,12 @@ public class FirebaseControl extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference myRef;
 
-    String sDeviceName, sDeviceMacAddress, sTemperature, sHumidity, sPump;
     private String TAG = FirebaseControl.class.getSimpleName();
     private Context context = FirebaseControl.this;
+
+    String s_device_name, s_device_password;
+
+    Boolean device_found = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,9 +60,25 @@ public class FirebaseControl extends AppCompatActivity {
         progress_switch_pump = findViewById(R.id.progress_switch_pump);
         ll_overlay_progress = findViewById(R.id.ll_overlay_progress);
 
+
+        s_device_name = Objects.requireNonNull(getIntent().getExtras()).getString("s_device_name");
+        s_device_password = Objects.requireNonNull(getIntent().getExtras()).getString("s_device_password");
+
         database = FirebaseDatabase.getInstance();
-        sDeviceName = "Smart-Tree-01";
-        myRef = database.getReference(sDeviceName);
+        myRef = database.getReference(s_device_name + "/" + s_device_password);
+
+        //starting a timer for checking timeout
+        new CountDownTimer(15000, 1000) {
+            public void onTick(long millisUntilFinished) {
+            }
+
+            public void onFinish() {
+                if (ll_overlay_progress.getVisibility() == View.VISIBLE) {
+                    finishWithResult(RESULT_CANCELED, getString(R.string.timeout));
+                }
+            }
+        }.start();
+
 
         // Read from the database
         myRef.addValueEventListener(new ValueEventListener() {
@@ -64,25 +86,31 @@ public class FirebaseControl extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
-                FirebaseModel firebaseModel = dataSnapshot.getValue(FirebaseModel.class);
+                if (dataSnapshot.getValue() != null) {
+                    device_found = true;
+                    FirebaseModel firebaseModel = dataSnapshot.getValue(FirebaseModel.class);
+                    //Log.d(TAG, "Value is: " + firebaseModel.getMac()+firebaseModel.getMoisture());
+                    tv_device_name.setText(s_device_name);
+                    tv_device_mac_address.setText(firebaseModel.getMac_address());
+                    temperature_progress.setProgress((int) firebaseModel.getTemperature());
+                    humidity_progress.setProgress(firebaseModel.getMoisture());
 
-                assert firebaseModel != null;
-                //Log.d(TAG, "Value is: " + firebaseModel.getMac()+firebaseModel.getMoisture());
-                tv_device_name.setText(sDeviceName);
-                tv_device_mac_address.setText(firebaseModel.getMac());
-                temperature_progress.setProgress((int) firebaseModel.getTemperature());
-                humidity_progress.setProgress(firebaseModel.getMoisture());
+                    switch_pump.setChecked(firebaseModel.isPump_trig());
+                    //disabling overlay progress
+                    ll_overlay_progress.setVisibility(View.GONE);
+                } else {
+                    finishWithResult(RESULT_CANCELED, getString(R.string.no_device_found));
+                }
 
-                switch_pump.setChecked(firebaseModel.isPump_trig());
-
-                //disabling overlay progress
-                ll_overlay_progress.setVisibility(View.GONE);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 // Failed to read value
                 Log.w(TAG, "Failed to read value.", error.toException());
+                Toast.makeText(context, error.getMessage(), Toast.LENGTH_LONG).show();
+                finish();
+
             }
         });
 
@@ -127,5 +155,27 @@ public class FirebaseControl extends AppCompatActivity {
         });
     }
 
+    private void finishWithResult(int result_code, String msg) {
+        Intent intent = new Intent();
+        intent.putExtra("msg", msg);
+        setResult(result_code, intent);
+        finish();
+    }
 
+    @Override
+    public void onBackPressed() {
+        //resulting back to the previous activity
+        if (device_found) {
+            finishWithResult(RESULT_OK, "");
+        }
+        super.onBackPressed();
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (device_found) {
+
+        }
+        super.onDestroy();
+    }
 }

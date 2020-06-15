@@ -55,5 +55,9 @@
     <string name="humidity">Humidity</string>
     <string name="device_control">Device Control</string>
     <string name="water_pump">Water Pump</string>
+    <string name="device_password">Password</string>
+    <string name="connect">Connect</string>
+    <string name="no_device_found">No device found :(</string>
+    <string name="timeout">Connection Timeout. Please make sure you have network connection and try again later</string>
 
 </resources>
