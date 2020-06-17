@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="9dp"
+    android:layout_marginBottom="9dp"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="30dp">
+
+    <TextView
+        android:id="@+id/error_msg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:gravity="center"
+        android:textColor="@color/red" />
+
+    <EditText
+        android:id="@+id/wifi_ssid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/btn_shape_outer_line"
+        android:gravity="center"
+        android:hint="@string/ssid"
+        android:inputType="textNoSuggestions"
+        android:padding="10dp" />
+
+
+    <EditText
+        android:id="@+id/wifi_pass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/btn_shape_outer_line"
+        android:gravity="center"
+        android:hint="@string/wifi_password"
+        android:inputType="textNoSuggestions"
+        android:padding="10dp" />
+
+
+    <Button
+        android:id="@+id/set"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/btn_shape_round_corner_normal_primary"
+        android:padding="10dp"
+        android:text="@string/wifi_set"
+        android:textColor="#ffff" />
+
+
+</LinearLayout>

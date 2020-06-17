@@ -11,31 +11,21 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:allowBackup="false"
         android:theme="@style/AppTheme">
-        <activity android:name=".BluetoothControl"></activity>
-        <activity
-            android:name=".FirebaseControl"
-            android:label="@string/device_control"
-            android:parentActivityName=".MainActivity"></activity>
-
-        <service
-            android:name=".ble.BluetoothLeService"
-            android:enabled="true" />
 
         <activity
-            android:name=".Home"
-            android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".activity.DeviceControlInternetActivity"
+            android:parentActivityName=".activity.MainActivity" />
         <activity
-            android:name=".ble.DeviceScanActivity"
+            android:name=".activity.DeviceControlBluetoothActivity"
+            android:parentActivityName=".activity.DeviceScanBluetoothActivity" />
+        <activity
+            android:name=".activity.DeviceScanBluetoothActivity"
             android:label="@string/title_activity_device_scan"
-            android:theme="@style/AppTheme" />
+            android:parentActivityName=".activity.MainActivity" />
         <activity
-            android:name=".ble.DeviceControlActivity"
-            android:label="@string/title_activity_my_device"
-            android:theme="@style/AppTheme" />
-        <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -43,6 +33,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name=".service.BluetoothLowEnergyService"
+            android:enabled="true" />
     </application>
 
 </manifest>

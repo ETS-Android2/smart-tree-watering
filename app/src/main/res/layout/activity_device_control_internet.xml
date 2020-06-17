@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FirebaseControl">
+    tools:context=".activity.DeviceControlInternetActivity">
 
 
     <ScrollView
@@ -125,11 +125,11 @@
                             app:arc_unfinished_color="?android:textColorSecondary" />
 
                         <com.github.lzyzsd.circleprogress.ArcProgress
-                            android:id="@+id/humidity_progress"
+                            android:id="@+id/moisture_progress"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_margin="5dp"
-                            app:arc_bottom_text="@string/humidity"
+                            app:arc_bottom_text="@string/moisture"
                             app:arc_finished_color="@color/colorPrimary"
                             app:arc_progress="0"
                             app:arc_stroke_width="5dp"

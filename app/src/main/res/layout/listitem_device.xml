@@ -18,17 +18,15 @@
             android:id="@+id/device_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Device Name"
-            android:textSize="24sp"
-            />
+            android:text="@string/device_name"
+            android:textColor="?android:textColorPrimary" />
 
         <TextView
             android:id="@+id/device_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:text="mac address"
-            />
+            android:text="@string/device_mac_address"
+            android:textColor="?android:textColorSecondary" />
     </LinearLayout>
 
 

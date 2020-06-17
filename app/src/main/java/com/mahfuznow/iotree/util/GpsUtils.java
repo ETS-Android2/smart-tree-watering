@@ -1,4 +1,4 @@
-package com.mahfuznow.iotree.ble;
+package com.mahfuznow.iotree.util;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;

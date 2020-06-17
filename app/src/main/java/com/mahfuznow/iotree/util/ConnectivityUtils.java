@@ -1,4 +1,4 @@
-package com.mahfuznow.iotree;
+package com.mahfuznow.iotree.util;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -8,7 +8,7 @@ import android.telephony.TelephonyManager;
 /**
  * Check device's network connectivity and speed
  */
-public class Connectivity {
+public class ConnectivityUtils {
 
     /**
      * Get the network info
@@ -23,7 +23,7 @@ public class Connectivity {
      * Check if there is any connectivity
      */
     public static boolean isConnected(Context context) {
-        NetworkInfo info = Connectivity.getNetworkInfo(context);
+        NetworkInfo info = ConnectivityUtils.getNetworkInfo(context);
         return (info != null && info.isConnected());
     }
 
@@ -31,7 +31,7 @@ public class Connectivity {
      * Check if there is any connectivity to a Wifi network
      */
     public static boolean isConnectedWifi(Context context) {
-        NetworkInfo info = Connectivity.getNetworkInfo(context);
+        NetworkInfo info = ConnectivityUtils.getNetworkInfo(context);
         return (info != null && info.isConnected() && info.getType() == ConnectivityManager.TYPE_WIFI);
     }
 
@@ -39,7 +39,7 @@ public class Connectivity {
      * Check if there is any connectivity to a mobile network
      */
     public static boolean isConnectedMobile(Context context) {
-        NetworkInfo info = Connectivity.getNetworkInfo(context);
+        NetworkInfo info = ConnectivityUtils.getNetworkInfo(context);
         return (info != null && info.isConnected() && info.getType() == ConnectivityManager.TYPE_MOBILE);
     }
 
@@ -47,8 +47,8 @@ public class Connectivity {
      * Check if there is fast connectivity
      */
     public static boolean isConnectedFast(Context context) {
-        NetworkInfo info = Connectivity.getNetworkInfo(context);
-        return (info != null && info.isConnected() && Connectivity.isConnectionFast(info.getType(), info.getSubtype()));
+        NetworkInfo info = ConnectivityUtils.getNetworkInfo(context);
+        return (info != null && info.isConnected() && ConnectivityUtils.isConnectionFast(info.getType(), info.getSubtype()));
     }
 
     /**

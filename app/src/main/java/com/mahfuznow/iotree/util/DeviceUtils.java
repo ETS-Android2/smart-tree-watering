@@ -1,9 +1,9 @@
-package com.mahfuznow.iotree;
+package com.mahfuznow.iotree.util;
 
 import android.app.Activity;
 import android.graphics.Point;
 
-class Utils {
+public class DeviceUtils {
     public static Point getScreenSize(Activity activity) {
         Point size = new Point();
         activity.getWindowManager().getDefaultDisplay().getSize(size);

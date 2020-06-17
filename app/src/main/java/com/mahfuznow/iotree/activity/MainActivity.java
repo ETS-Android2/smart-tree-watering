@@ -1,4 +1,4 @@
-package com.mahfuznow.iotree;
+package com.mahfuznow.iotree.activity;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -15,7 +15,8 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.mahfuznow.iotree.ble.DeviceScanActivity;
+import com.mahfuznow.iotree.R;
+import com.mahfuznow.iotree.util.DeviceUtils;
 
 import java.util.Objects;
 
@@ -40,14 +41,14 @@ public class MainActivity extends AppCompatActivity {
         btn_connect_via_bluetooth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, DeviceScanActivity.class));
+                startActivity(new Intent(MainActivity.this, DeviceScanBluetoothActivity.class));
             }
         });
         btn_connect_via_internet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 final android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(context, R.style.CustomAlertDialog);
-                View dialog_view = LayoutInflater.from(context).inflate(R.layout.dialog_custom, null);
+                View dialog_view = LayoutInflater.from(context).inflate(R.layout.dialog_layout_connect_device, null);
                 builder.setView(dialog_view);
                 builder.setCancelable(true);
                 alertDialog = builder.create();
@@ -64,10 +65,13 @@ public class MainActivity extends AppCompatActivity {
                         String s_device_password = dialog_device_password.getText().toString().trim();
                         if (TextUtils.isEmpty(s_device_name)) {
                             dialog_device_name.requestFocus();
+                            dialog_error_msg.setText(R.string.pleas_enter_device_name);
                         } else if (TextUtils.isEmpty(s_device_password)) {
                             dialog_device_password.requestFocus();
-                        } else {
-                            Intent intent = new Intent(MainActivity.this, FirebaseControl.class);
+                            dialog_error_msg.setText(R.string.please_enter_password);
+                        } else if (!TextUtils.isEmpty(s_device_name) && !TextUtils.isEmpty(s_device_password)) {
+                            dialog_error_msg.setText("");
+                            Intent intent = new Intent(MainActivity.this, DeviceControlInternetActivity.class);
                             intent.putExtra("s_device_name", s_device_name);
                             intent.putExtra("s_device_password", s_device_password);
                             startActivityForResult(intent, REQUEST_CODE_DEVICE_CONNECT);
@@ -76,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 });
                 alertDialog.show();
                 //resizing dialog
-                Point screen_size = Utils.getScreenSize(MainActivity.this);
+                Point screen_size = DeviceUtils.getScreenSize(MainActivity.this);
                 Objects.requireNonNull(alertDialog.getWindow()).setLayout((int) (screen_size.x * .8), (int) (screen_size.y * .6));
                 //dialog's background and layout gravity were declared in R.style.CustomAlertDialog
             }

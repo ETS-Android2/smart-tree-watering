@@ -1,29 +1,27 @@
-package com.mahfuznow.iotree.ble;
+package com.mahfuznow.iotree.adapter;
 
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.mahfuznow.iotree.R;
 
 import java.util.ArrayList;
 
-class LeDeviceListAdapter extends BaseAdapter {
+public class ScanDeviceListAdapter extends BaseAdapter {
 
 
     private ArrayList<BluetoothDevice> mLeDevices;
     private LayoutInflater mInflator;
     Context mContext;
 
-    public LeDeviceListAdapter(Context context) {
+    public ScanDeviceListAdapter(Context context) {
         super();
-        mContext=context;
+        mContext = context;
         mLeDevices = new ArrayList<BluetoothDevice>();
         mInflator = LayoutInflater.from(context);
     }
