@@ -12,3 +12,6 @@
 /captures
 .externalNativeBuild
 .cxx
+app/build/generated/
+app/build/intermediates/
+app/build/outputs/logs/
