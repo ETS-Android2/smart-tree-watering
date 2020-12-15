@@ -58,5 +58,6 @@
     <string name="please_enter_password">Please enter password</string>
     <string name="moisture">Moisture</string>
     <string name="pleas_enter_device_name">Please enter device name</string>
+    <string name="weather_info">Weather info</string>
 
 </resources>

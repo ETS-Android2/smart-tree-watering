@@ -1,5 +1,6 @@
 package com.mahfuznow.iotree.activity;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -16,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -208,6 +210,9 @@ public class DeviceControlBluetoothActivity extends AppCompatActivity {
                 snackbar.show();
             }
         });
+        String latitude = "25.7830";
+        String longitude = "88.8983";
+        displayWeatherData(latitude, longitude);
     }
 
     private void updateConnectionState(final int resourceId) {
@@ -243,6 +248,23 @@ public class DeviceControlBluetoothActivity extends AppCompatActivity {
             moisture_progress.setProgress(int_moisture);
             switch_pump.setChecked(pump_trig);
         }
+    }
+
+    public void displayWeatherData(String latitude, String longitude) {
+        String weather_html = "<!DOCTYPE html>\n" +
+                "<html>\n" +
+                "<head>\n" +
+                "<meta http-equiv=”Content-type” CONTENT=”text/html; charset=utf-8″>\n" +
+                "</head><body id=”weather-body” onload=”formatIframe()”>\n" +
+                "<tr>\n" +
+                "  <iframe id=\"forecast_embed\" type=\"text/html\" frameborder=\"0\" height=\"245\" width=\"100%\" src=\"http://forecast.io/embed/#lat="
+                + latitude + "&lon=" + longitude + "&color=#02b3e4&font=Arial&units=ca\"> </iframe>\n" +
+                "</tr>\n" +
+                "</body>";
+        WebView webview = findViewById(R.id.weather_webview);
+        webview.getSettings().setJavaScriptEnabled(true);
+        webview.getSettings().setUseWideViewPort(true); // This is required to load full width of the page for vertical scrolling
+        webview.loadData(weather_html, "text/html; charset=utf-8", "UTF-8");
     }
 
     private void clearUI() {
