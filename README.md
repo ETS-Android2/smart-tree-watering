@@ -7,6 +7,8 @@ In this project, I've developed an **IoT device** and an **android app**. The Io
 <!-- https://github.com/mahfuznow/smart-tree-watering/ -->
 ![block diagram](/images/block-diagram.jpg)
 
+## YouTube Video
+[<img src="/images/youtube_thumbnail-min.png" width="100%">](https://youtu.be/uyJuslUufZI)
 
 ### Android App
 The App connects with the IoT Device via Wi-Fi or Bluetooth
